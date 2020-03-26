@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './Form.css'
 
 class Form extends React.Component {
     constructor(props) {
@@ -25,27 +25,31 @@ class Form extends React.Component {
  
     render() { 
         return ( 
-            <div>
+            <div className="mortgage-form">
                 <form>
-                    <label for="fname">Enter Mortgage Amount: </label>
+                    <label>Enter Mortgage Amount: </label>
                     <input/>
                 </form>
-                <div className="mb-2">
-                <form onSubmit={this.handleSubmit}>
-                    <label>
-                    <span>Mortgage Term: </span> 
-                    <select value={this.state.value} onChange={this.handleChange}>
-                        <option value="10-Year">10-Year</option> 
-                        <option value="15-Year">15-Year</option>
-                        <option value="20-Year">20-Year</option>
-                        <option value="25-Year">25-Year</option>
-                        <option value="30-Year">30-Year</option>
-                    </select>
-                    </label>
-                    <input type="submit" value="Submit" />
-                </form>
+                <div className="mortgage-term">
+                    <form onSubmit={this.handleSubmit}>
+                        <label>
+                            <span>Mortgage Term: </span> 
+                            <select value={this.state.value} onChange={this.handleChange}>
+                                <option value="10-Year">10-Year</option> 
+                                <option value="15-Year">15-Year</option>
+                                <option value="20-Year">20-Year</option>
+                                <option value="25-Year">25-Year</option>
+                                <option value="30-Year">30-Year</option>
+                            </select>
+                        </label>
+                        <div>
+                            <input type="submit" value="Submit" />
+                        </div>
+                    </form>
                 </div>
-            
+                <div>
+                    <h4>The monthly estimate is: </h4>
+                </div>
             </div>
          );
     }
