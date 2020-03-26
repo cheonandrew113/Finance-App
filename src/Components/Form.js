@@ -1,26 +1,27 @@
 import React from 'react'
-import DropdownButton from 'react-bootstrap/DropdownButton'
-import Dropdown from 'react-bootstrap/Dropdown'
-import './Form.css'
+
+
 class Form extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {  }
-    }
+        this.state = { value: "Mortgage Term" };
 
+    // this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-    
-    showCheckboxes = () => {
-        let expanded = false;
-    var checkboxes = document.getElementById("checkboxes");
-    if (!expanded) {
-        checkboxes.style.display = "block";
-        expanded = true;
-    } else {
-        checkboxes.style.display = "none";
-        expanded = false;
-        }
-    }
+  //   handleChange(event) {
+  //     this.setState({ value: event.target.value });
+  //   }
+
+  handleSubmit(event) {
+    alert("Mortgage Term: " + this.state.value);
+    event.preventDefault();
+  }
+
+  handleChange = event => {
+    this.setState({ value: event.target.value });
+  };
  
     render() { 
         return ( 
@@ -30,11 +31,19 @@ class Form extends React.Component {
                     <input/>
                 </form>
                 <div className="mb-2">
-                <DropdownButton id="dropdown-basic-button" title="Dropdown button">
-                    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-                </DropdownButton>
+                <form onSubmit={this.handleSubmit}>
+                    <label>
+                    <span>Mortgage Term: </span> 
+                    <select value={this.state.value} onChange={this.handleChange}>
+                        <option value="10-Year">10-Year</option> 
+                        <option value="15-Year">15-Year</option>
+                        <option value="20-Year">20-Year</option>
+                        <option value="25-Year">25-Year</option>
+                        <option value="30-Year">30-Year</option>
+                    </select>
+                    </label>
+                    <input type="submit" value="Submit" />
+                </form>
                 </div>
             
             </div>
